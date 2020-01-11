@@ -1,0 +1,86 @@
+body {
+    background: url("../photos/background-img.jpg") no-repeat center top fixed;
+}
+
+* {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+}
+
+.ui.yellow.inverted.menu a.item, .ui.simple.dropdown.item {
+    color: #000000;
+}
+
+.ui.menu:not(.vertical) .right.item, .ui.menu:not(.vertical) .right.menu {
+    margin-left: 0 !important;
+}
+
+.ui.yellow.inverted.menu a.item:hover {
+    color: #ffffff;
+}
+
+div.menu > img {
+    margin: auto;
+}
+
+.ui.menu .right.menu .ui.dropdown .menu>.item {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.ukIcon {
+    content: url("../photos/uk.png");
+    width: 20px;
+    height: 20px;
+}
+
+.croIcon {
+    content: url("../photos/croatia.png");
+    width: 20px;
+    height: 20px;
+}
+
+.App.ui {
+    background: white;
+    height: 62%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 40%;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 20px 5px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 0px 20px 5px rgba(0,0,0,1);
+    box-shadow: 0px 0px 20px 5px rgba(0,0,0,1);
+
+}
+
+.right.menu {
+    margin-left: 0;
+}
+
+.grid.container.form-wrapper {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+.six.wide.column.img-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ten.wide.column.details-wrapper {
+    padding: 2rem;
+}
+
+
+@media (max-width: 723px){
+    .menu img, .edge-images {
+        display: none;
+    }
+}

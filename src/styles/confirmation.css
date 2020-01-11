@@ -1,0 +1,16 @@
+.message-wrapper {
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.message-wrapper > h2 {
+    font-family: 'Caveat Brush', cursive;
+    font-size: 2.7rem;
+    margin-bottom: 3rem;
+    border-bottom: 2px solid #fbbd08;
+}
+
