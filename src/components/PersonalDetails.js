@@ -1,9 +1,6 @@
 import React from "react";
 import "../styles/detailsStyle.css";
 
-import English from "../languages/english";
-import Croatian from "../languages/croatian";
-
 class PersonalDetails extends React.Component {
   /* Continue function, when button is clicked */
   continue = e => {
@@ -18,9 +15,9 @@ class PersonalDetails extends React.Component {
     return (
       <div>
         <form className="ui form" noValidate>
-          <h2 className="ui dividing header">{values.language.language === "en" ? English.personalHeader : Croatian.personalHeader}</h2>
+          <h2 className="ui dividing header">{values.language.personalHeader}</h2>
           <div className="field">
-            <label htmlFor="firstName">{values.language.language === "en" ? English.fname : Croatian.fName}</label>
+            <label htmlFor="firstName">{values.language.fName}</label>
             <input
               type="text"
               name="firstName"
@@ -30,7 +27,7 @@ class PersonalDetails extends React.Component {
             <div className="input-error">{values.errors.fNameError}</div>
           </div>
           <div className="field">
-            <label htmlFor="lastName">{values.language.language === "en" ? English.lName : Croatian.lName}</label>
+            <label htmlFor="lastName">{values.language.lName}</label>
             <input
               type="text"
               name="lastName"
@@ -40,7 +37,7 @@ class PersonalDetails extends React.Component {
             <div className="input-error">{values.errors.lNameError}</div>
           </div>
           <div className="field">
-            <label htmlFor="lastName">{values.language.language === "en" ? English.email : Croatian.email}</label>
+            <label htmlFor="lastName">{values.language.email}</label>
             <input
               type="email"
               name="email"
@@ -52,12 +49,12 @@ class PersonalDetails extends React.Component {
           <div>
             <div className="ui checkbox">
               <input type="checkbox" name="tos" id="tos" />
-              <label htmlFor="tos">{values.language.language === "en" ? English.tos : Croatian.tos}</label>
+              <label htmlFor="tos">{values.language.tos}</label>
               <div className="input-error">{values.errors.tosError}</div>
             </div>
           </div>
           <button onClick={this.continue} className="ui black basic button">
-            {values.language.language === "en" ? English.continue : Croatian.continue}
+            {values.language.continue}
             <i className="angle right icon" />
           </button>
         </form>

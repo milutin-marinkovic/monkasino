@@ -1,9 +1,6 @@
 import React from "react";
 import "../styles/detailsStyle.css";
 
-import English from "../languages/english";
-import Croatian from "../languages/croatian";
-
 class UserDetails extends React.Component {
   /* Function for return button */
   goBack = e => {
@@ -24,9 +21,9 @@ class UserDetails extends React.Component {
     return (
       <div>
         <form onSubmit={this.toSubmit} className="ui form" noValidate>
-          <h2 className="ui dividing header">{values.language.language === "en" ? English.userHeader : Croatian.userHeader}</h2>
+          <h2 className="ui dividing header">{values.language.userHeader}</h2>
           <div className="field">
-            <label htmlFor="firstName">{values.language.language === "en" ? English.username : Croatian.username}</label>
+            <label htmlFor="firstName">{values.language.username}</label>
             <div>
               <input
                 type="text"
@@ -40,7 +37,7 @@ class UserDetails extends React.Component {
             </div>
           </div>
           <div className="field">
-            <label htmlFor="lastName">{values.language.language === "en" ? English.password : Croatian.password}</label>
+            <label htmlFor="lastName">{values.language.password}</label>
             <div>
               <input
                 type="password"
@@ -54,7 +51,7 @@ class UserDetails extends React.Component {
             </div>
           </div>
           <div className="field">
-            <label htmlFor="lastName">{values.language.language === "en" ? English.confirmPassword : Croatian.confirmPassword}</label>
+            <label htmlFor="lastName">{values.language.confirmPassword}</label>
             <div>
               <input
                 type="password"
@@ -69,9 +66,9 @@ class UserDetails extends React.Component {
           </div>
           <button onClick={this.goBack} className="ui black basic button">
             <i className="angle left icon" />
-            {values.language.language === "en" ? English.return : Croatian.return}
+            {values.language.return}
           </button>
-          <button type="submit" className="ui yellow button">{values.language.language === "en" ? English.submit : Croatian.submit}</button>
+          <button type="submit" className="ui yellow button">{values.language.submit}</button>
         </form>
       </div>
     );

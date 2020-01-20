@@ -7,14 +7,10 @@ import Confirmation from "./Confirmation";
 import loaderImg from "../photos/loader.jpg";
 import "../styles/loader.css";
 
-import English from "../languages/english";
-import Croatian from "../languages/croatian";
-
 class UserForm extends React.Component {
   state = {
     step: 1,
     loading: false,
-    language: "en",
     data: {
       firstName: "",
       lastName: "",
@@ -38,6 +34,7 @@ class UserForm extends React.Component {
     if (props.language !== state.language) {
       return { ...state, language: props.language };
     }
+    return null;
   }
 
   /* Form validation of the first step */
@@ -52,9 +49,7 @@ class UserForm extends React.Component {
         errors: {
           ...prevState.errors,
           fNameError:
-            this.state.language.language === "en"
-              ? English.fNameErr
-              : Croatian.fNameErr
+            this.state.language.fNameErr
         }
       }));
       valid = false;
@@ -68,9 +63,7 @@ class UserForm extends React.Component {
         errors: {
           ...prevState.errors,
           lNameError:
-            this.state.language.language === "en"
-              ? English.lNameErr
-              : Croatian.lNameErr
+            this.state.language.lNameErr
         }
       }));
       valid = false;
@@ -80,9 +73,7 @@ class UserForm extends React.Component {
         errors: {
           ...prevState.errors,
           emailError:
-            this.state.language.language === "en"
-              ? English.emailErr
-              : Croatian.emailErr
+            this.state.language.emailErr
         }
       }));
       valid = false;
@@ -93,9 +84,7 @@ class UserForm extends React.Component {
         errors: {
           ...prevState.errors,
           tosError:
-            this.state.language.language === "en"
-              ? English.tosErr
-              : Croatian.tosErr
+            this.state.language.tosErr
         }
       }));
       valid = false;
@@ -116,9 +105,7 @@ class UserForm extends React.Component {
         errors: {
           ...prevState.errors,
           usernameError:
-            this.state.language.language === "en"
-              ? English.usernameErr
-              : Croatian.usernameErr
+            this.state.language.usernameErr
         }
       }));
       valid = false;
@@ -129,9 +116,7 @@ class UserForm extends React.Component {
         errors: {
           ...prevState.errors,
           passwordError:
-            this.state.language.language === "en"
-              ? English.passwordErr
-              : Croatian.passwordErr
+            this.state.language.passwordErr
         }
       }));
       valid = false;
@@ -142,9 +127,7 @@ class UserForm extends React.Component {
         errors: {
           ...prevState.errors,
           pConfirmError:
-            this.state.language.language === "en"
-              ? English.passwordConfirmErr
-              : Croatian.passwordConfirmErr
+            this.state.language.passwordConfirmErr
         }
       }));
       valid = false;

@@ -41,9 +41,21 @@ div.menu > img {
     height: 20px;
 }
 
+.espIcon {
+    content: url("../photos/spain.png");
+    width: 20px;
+    height: 20px;
+}
+
+.frIcon {
+    content: url("../photos/france.png");
+    width: 20px;
+    height: 20px;
+}
+
 .App.ui {
     background: white;
-    height: 62%;
+    height: 70%;
     position: absolute;
     top: 0;
     bottom: 0;
