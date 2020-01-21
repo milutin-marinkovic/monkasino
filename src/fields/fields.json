@@ -1,0 +1,12 @@
+[
+  {
+    "htmlFor": "firstName",
+    "type": "text",
+    "name": "firstName"
+  },
+  {
+    "htmlFor": "lastName",
+    "type": "text",
+    "name": "lastName"
+  }
+]

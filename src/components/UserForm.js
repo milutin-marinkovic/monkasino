@@ -1,8 +1,13 @@
 import React from "react";
 
+/* COMPONENTS */
 import PersonalDetails from "./PersonalDetails";
 import UserDetails from "./UserDetails";
 import Confirmation from "./Confirmation";
+
+/* JSON FILES */
+import fields from "../fields/fields";
+import personalDetailsJSON from "../fields/personalDetails";
 
 import loaderImg from "../photos/loader.jpg";
 import "../styles/loader.css";
@@ -27,8 +32,10 @@ class UserForm extends React.Component {
       usernameError: "",
       passwordError: "",
       pConfirmError: ""
-    }
+    },
+    newData: [fields]
   };
+
 
   static getDerivedStateFromProps(props, state) {
     if (props.language !== state.language) {
@@ -246,11 +253,17 @@ class UserForm extends React.Component {
     switch (step) {
       case 1:
         return (
-          <PersonalDetails
-            nextStep={this.nextStep}
-            handleChange={this.handleChange}
-            values={values}
-          />
+            /*fields.map((input, i) => {
+              return <TestComponent key={i} params={input} />
+            })*/
+            personalDetailsJSON.map((input, i) => {
+              return <PersonalDetails
+                  key={i}
+                  params={input}
+                  nextStep={this.nextStep}
+                  handleChange={this.handleChange}
+                  values={values} />
+            })
         );
 
       case 2:
@@ -272,6 +285,9 @@ class UserForm extends React.Component {
 
       case 4:
         return <Confirmation values={values} />;
+
+      default:
+        return null;
     }
   }
 }

@@ -3,10 +3,7 @@ import ReactDOM from "react-dom";
 
 import UserForm from "./components/UserForm";
 
-import English from "./languages/english";
-import Croatian from "./languages/croatian";
-import Spanish from "./languages/spanish";
-import French from "./languages/french"
+import languages from "./languages/languages";
 
 import navbarImg from "./photos/navbar-logo.png";
 import navbarBrand from "./photos/monKasino-text.png";
@@ -16,30 +13,30 @@ import "./styles/main.css";
 
 class App extends React.Component {
   state = {
-    language: English
+    language: languages.en,
   };
 
   changeLangEn = () => {
     this.setState({
-      language: English
+      language: languages.en
     });
   };
 
   changeLangCro = () => {
     this.setState({
-      language: Croatian
-    })
+      language: languages.cro
+    });
   };
 
   changeLangEsp = () => {
     this.setState({
-      language: Spanish
+      language: languages.es
     })
   };
 
   changeLangFr = () => {
     this.setState({
-      language: French
+      language: languages.fr
     })
   };
 
