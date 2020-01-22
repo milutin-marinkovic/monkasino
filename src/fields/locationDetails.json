@@ -1,0 +1,26 @@
+[
+  {
+    "className": "field",
+    "htmlFor": "address",
+    "label": "address",
+    "type": "text",
+    "name": "address",
+    "error": "addressError"
+  },
+  {
+    "className": "field",
+    "htmlFor": "city",
+    "label": "city",
+    "type": "text",
+    "name": "city",
+    "error": "cityError"
+  },
+  {
+    "className": "field",
+    "htmlFor": "country",
+    "label": "country",
+    "type": "text",
+    "name": "country",
+    "error": "countryError"
+  }
+]

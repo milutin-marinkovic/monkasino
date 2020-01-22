@@ -2,12 +2,14 @@ import React from "react";
 
 /* COMPONENTS */
 import PersonalDetails from "./PersonalDetails";
+import LocationDetails from "./LocationDetails";
 import UserDetails from "./UserDetails";
 import Confirmation from "./Confirmation";
 
 /* JSON FILES */
-import fields from "../fields/fields";
 import personalDetailsJSON from "../fields/personalDetails";
+import locationDetailsJSON from "../fields/locationDetails"
+import userDetailsJSON from "../fields/userDetails";
 
 import loaderImg from "../photos/loader.jpg";
 import "../styles/loader.css";
@@ -20,6 +22,9 @@ class UserForm extends React.Component {
       firstName: "",
       lastName: "",
       email: "",
+      address: "",
+      city: "",
+      country: "",
       username: "",
       password: "",
       password_confirm: ""
@@ -29,13 +34,14 @@ class UserForm extends React.Component {
       lNameError: "",
       emailError: "",
       tosError: "",
+      addressError: "",
+      cityError: "",
+      countryError: "",
       usernameError: "",
       passwordError: "",
       pConfirmError: ""
-    },
-    newData: [fields]
+    }
   };
-
 
   static getDerivedStateFromProps(props, state) {
     if (props.language !== state.language) {
@@ -55,8 +61,7 @@ class UserForm extends React.Component {
       this.setState(prevState => ({
         errors: {
           ...prevState.errors,
-          fNameError:
-            this.state.language.fNameErr
+          fNameError: this.state.language.fNameErr
         }
       }));
       valid = false;
@@ -69,8 +74,7 @@ class UserForm extends React.Component {
       this.setState(prevState => ({
         errors: {
           ...prevState.errors,
-          lNameError:
-            this.state.language.lNameErr
+          lNameError: this.state.language.lNameErr
         }
       }));
       valid = false;
@@ -79,8 +83,7 @@ class UserForm extends React.Component {
       this.setState(prevState => ({
         errors: {
           ...prevState.errors,
-          emailError:
-            this.state.language.emailErr
+          emailError: this.state.language.emailErr
         }
       }));
       valid = false;
@@ -90,8 +93,7 @@ class UserForm extends React.Component {
       this.setState(prevState => ({
         errors: {
           ...prevState.errors,
-          tosError:
-            this.state.language.tosErr
+          tosError: this.state.language.tosErr
         }
       }));
       valid = false;
@@ -100,19 +102,53 @@ class UserForm extends React.Component {
   };
 
   /* Form validation of the second step */
-  validateSecondForm = () => {
+  validateLocationForm = () => {
+    let valid = true;
+    if (!this.state.data.address) {
+      this.setState(prevState => ({
+        errors: {
+          ...prevState.errors,
+          addressError: this.state.language.addressErr
+        }
+      }));
+      valid = false;
+    }
+    if (!this.state.data.city) {
+      this.setState(prevState => ({
+        errors: {
+          ...prevState.errors,
+          cityError: this.state.language.cityErr
+        }
+      }));
+      valid = false;
+    }
+    if (!this.state.data.country) {
+      this.setState(prevState => ({
+        errors: {
+          ...prevState.errors,
+          countryError: this.state.language.countryErr
+        }
+      }));
+      valid = false;
+    }
+
+    return valid;
+  };
+
+  /* Validate third step */
+  validateUserForm = () => {
     let passwordRegex = /^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}$/;
     let valid = true;
 
     if (
-      this.state.data.username.length < 4 ||
-      this.state.data.username.length > 20
+        this.state.data.username.length < 4 ||
+        this.state.data.username.length > 20
     ) {
       this.setState(prevState => ({
         errors: {
           ...prevState.errors,
           usernameError:
-            this.state.language.usernameErr
+          this.state.language.usernameErr
         }
       }));
       valid = false;
@@ -123,7 +159,7 @@ class UserForm extends React.Component {
         errors: {
           ...prevState.errors,
           passwordError:
-            this.state.language.passwordErr
+          this.state.language.passwordErr
         }
       }));
       valid = false;
@@ -134,7 +170,7 @@ class UserForm extends React.Component {
         errors: {
           ...prevState.errors,
           pConfirmError:
-            this.state.language.passwordConfirmErr
+          this.state.language.passwordConfirmErr
         }
       }));
       valid = false;
@@ -142,6 +178,7 @@ class UserForm extends React.Component {
 
     return valid;
   };
+
 
   /* Form submit */
   submitCompleteForm = () => {
@@ -155,13 +192,28 @@ class UserForm extends React.Component {
       }
     }));
 
-    const fields = [
+    const fieldsAPI = [
       {
         code: "fName",
         valueStr: this.state.data.firstName,
         dataType: "string"
       },
       { code: "lName", valueStr: this.state.data.lastName, dataType: "string" },
+      {
+        code: "address",
+        valueStr: this.state.data.address,
+        dataType: "string"
+      },
+      {
+        code: "city",
+        valueStr: this.state.data.city,
+        dataType: "string"
+      },
+      {
+        code: "country",
+        valueStr: this.state.data.country,
+        dataType: "string"
+      },
       {
         code: "username",
         valueStr: this.state.data.username,
@@ -180,7 +232,7 @@ class UserForm extends React.Component {
       }
     ];
 
-    if (this.validateSecondForm()) {
+    if (this.validateUserForm()) {
       const { step } = this.state;
       this.setState({
         step: step + 1
@@ -192,12 +244,12 @@ class UserForm extends React.Component {
         this.setState({
           step: step + 1
         });
-        return fields;
+        return fieldsAPI;
       }, 4000);
     }
   };
 
-  /* Proceed to next step */
+  /* Proceed to Location Details */
   nextStep = () => {
     const { step } = this.state;
 
@@ -212,6 +264,26 @@ class UserForm extends React.Component {
     }));
 
     if (this.validateFirstForm()) {
+      this.setState({
+        step: step + 1
+      });
+    }
+  };
+
+  /* Proceed to User Details */
+  nextStepLocation = () => {
+    const { step } = this.state;
+
+    this.setState(prevState => ({
+      errors: {
+        ...prevState.errors,
+        addressError: "",
+        cityError: "",
+        countryError: "",
+      }
+    }));
+
+    if (this.validateLocationForm()) {
       this.setState({
         step: step + 1
       });
@@ -253,37 +325,45 @@ class UserForm extends React.Component {
     switch (step) {
       case 1:
         return (
-            /*fields.map((input, i) => {
-              return <TestComponent key={i} params={input} />
-            })*/
-            personalDetailsJSON.map((input, i) => {
-              return <PersonalDetails
-                  key={i}
-                  params={input}
-                  nextStep={this.nextStep}
-                  handleChange={this.handleChange}
-                  values={values} />
-            })
+          <PersonalDetails
+            previousStep={this.previousStep}
+            nextStep={this.nextStep}
+            handleChange={this.handleChange}
+            values={values}
+            fields={personalDetailsJSON}
+          />
         );
 
       case 2:
+        return (
+          <LocationDetails
+            previousStep={this.previousStep}
+            nextStep={this.nextStepLocation}
+            handleChange={this.handleChange}
+            values={values}
+            fields={locationDetailsJSON}
+          />
+        );
+
+      case 3:
         return (
           <UserDetails
             previousStep={this.previousStep}
             handleChange={this.handleChange}
             submitCompleteForm={this.submitCompleteForm}
             values={values}
+            fields={userDetailsJSON}
           />
         );
 
-      case 3:
+      case 4:
         return (
           <div className="loader-wrapper">
             <img className="loaderImg" src={loaderImg} alt="loader" />
           </div>
         );
 
-      case 4:
+      case 5:
         return <Confirmation values={values} />;
 
       default:

@@ -1,5 +1,26 @@
 [
   {
-    "fNameError": "values.errors.fNameError"
+    "className": "field",
+    "htmlFor": "firstName",
+    "label": "fName",
+    "type": "text",
+    "name": "firstName",
+    "error": "fNameError"
+  },
+  {
+    "className": "field",
+    "htmlFor": "lastName",
+    "label": "lName",
+    "type": "text",
+    "name": "lastName",
+    "error": "lNameError"
+  },
+  {
+    "className": "field",
+    "htmlFor": "email",
+    "label": "email",
+    "type": "email",
+    "name": "email",
+    "error": "emailError"
   }
 ]

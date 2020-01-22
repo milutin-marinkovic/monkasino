@@ -1,0 +1,26 @@
+[
+  {
+    "className": "field",
+    "htmlFor": "username",
+    "label": "username",
+    "type": "text",
+    "name": "username",
+    "error": "usernameError"
+  },
+  {
+    "className": "field",
+    "htmlFor": "password",
+    "label": "password",
+    "type": "password",
+    "name": "password",
+    "error": "passwordError"
+  },
+  {
+    "className": "field",
+    "htmlFor": "password-confirm",
+    "label": "confirmPassword",
+    "type": "password",
+    "name": "password_confirm",
+    "error": "pConfirmError"
+  }
+]
